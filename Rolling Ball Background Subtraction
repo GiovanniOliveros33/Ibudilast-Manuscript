@@ -1,0 +1,26 @@
+//Title and Split Channels
+title=getTitle()
+c1Title = "C1-" + title; 
+c2Title = "C2-" + title;
+c3Title = "C3-" + title;
+
+
+
+run("Split Channels");
+
+selectWindow( "C3-" + title);
+run("Subtract Background...", "rolling=50");
+
+
+
+selectWindow( "C2-" + title);
+run("Subtract Background...", "rolling=50");
+
+
+
+selectWindow("C1-" + title);
+run("Subtract Background...", "rolling=50");
+
+
+
+run("Merge Channels...", "c1=[" + c1Title + "] c2=[" + c2Title + "] c3=[" + c3Title + "] create");
